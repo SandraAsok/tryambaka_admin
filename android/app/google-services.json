@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "192565548233",
+    "project_id": "tryambaka-store",
+    "storage_bucket": "tryambaka-store.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192565548233:android:c962361f64a309878fa918",
+        "android_client_info": {
+          "package_name": "com.example.tryambaka_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192565548233-dvcn5v4busca50v9mt1et49umjm4baon.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRqhaCvKP9zjOaaqVeQHVrOfJ9MfbbypA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192565548233-dvcn5v4busca50v9mt1et49umjm4baon.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
