@@ -17,9 +17,9 @@ class SplashScreen extends StatelessWidget {
           } else if (snapshot.hasError) {
             return const SnackBar(content: Text('something went wrong'));
           } else if (snapshot.hasData) {
-            return HomeScreen();
+            return const HomeScreen();
           } else {
-            return LoginScreen();
+            return const LoginScreen();
           }
         },
       ),
