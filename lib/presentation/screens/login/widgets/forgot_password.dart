@@ -1,93 +1,126 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_admin/data/colors/colors.dart';
 import 'package:tryambaka_admin/data/constants/constants.dart';
-import 'package:tryambaka_admin/presentation/screens/login/login_screen.dart';
-import 'package:tryambaka_admin/presentation/widgets/snackbar.dart';
+import 'package:tryambaka_admin/presentation/screens/login/widgets/login_background.dart';
+import 'package:tryambaka_admin/presentation/screens/login/widgets/textfield_signup.dart';
+import 'package:tryambaka_admin/presentation/widgets/utils.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+import '../../../../main.dart';
 
-  @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
-}
+class ForgotPassword extends StatelessWidget {
+  ForgotPassword({super.key});
+  final formKey = GlobalKey<FormState>();
 
-TextEditingController emailController = TextEditingController();
-TextEditingController passwordController = TextEditingController();
-final formKey = GlobalKey<FormState>();
-
-class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                kHeight100,
-                // const LoginTextField(
-                //   hint: "enter your email address",
-                //   prefixicon: Icons.email,
-                //   inputaction: TextInputAction.done,
-                //   inputType: TextInputType.emailAddress,
-                //   obsecuretext: false,
-                // ),
-                TextFormField(
-                  controller: emailController,
-                  validator: (value) {
-                    if (value!.isEmpty ||
-                        !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                            .hasMatch(value)) {
-                      return "Enter Valid Email";
-                    } else {
-                      return null;
-                    }
-                  },
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    labelText: "Enter Email",
+    final emailController = TextEditingController();
+    final Size size = MediaQuery.of(context).size;
+    String? emailaddressValidator(String? email) {
+      if (!EmailValidator.validate(emailController.text.trim())) {
+        return 'invalid email';
+      }
+
+      return null;
+    }
+
+    Future<void> verifyEmail() async {
+      final isValid = formKey.currentState!.validate();
+      if (!isValid) return;
+
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const Center(child: CircularProgressIndicator()),
+      );
+      try {
+        await FirebaseAuth.instance
+            .sendPasswordResetEmail(email: emailController.text.trim());
+      } on FirebaseAuthException catch (e) {
+        print(e);
+        utils.showSnackbar(e.message);
+      }
+      navigatorKey.currentState!.popUntil((route) => route.isFirst);
+    }
+
+    return SafeArea(
+      child: Stack(
+        children: [
+          LoginBackground(imageurl: "assets/images/login_bg.jpg"),
+          Scaffold(
+            backgroundColor: transparent,
+            body: SingleChildScrollView(
+              child: Form(
+                key: formKey,
+                child: Center(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 250,
+                      ),
+                      const Center(
+                        child: Text(
+                          'Recive an Email to reset your password',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                      ),
+                      sbox,
+                      sbox,
+                      const SizedBox(
+                        height: 100,
+                      ),
+                      TextFieldSignUp(
+                          validator: emailaddressValidator,
+                          formKey: formKey,
+                          selection: 1,
+                          controller: emailController,
+                          icon: Icons.email,
+                          title: 'Email'),
+                      sbox,
+                      // SignUpButton(
+                      //     // ontap: signIn(),
+                      //     size: size,
+                      //     color: colorgreen,
+                      //     text: 'Log In',
+                      //     widget: MainPage(),
+                      //   ),
+                      sbox,
+                      sbox,
+                      InkWell(
+                        onTap: () {
+                          verifyEmail();
+                        },
+                        child: Container(
+                          width: size.width * 0.9,
+                          height: size.width * 0.13,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: white),
+                              borderRadius: BorderRadius.circular(20),
+                              color: black),
+                          child: const Center(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                'Reset Password',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      sbox,
+
+                      sbox,
+
+                      sbox,
+                    ],
                   ),
                 ),
-                kHeight25,
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: black, borderRadius: BorderRadius.circular(25)),
-                  child: TextButton(
-                    onPressed: () async {
-                      if (formKey.currentState!.validate()) {
-                        await FirebaseAuth.instance
-                            .sendPasswordResetEmail(email: emailController.text)
-                            .then((value) {
-                          alertSnackbar(context, 'check your email');
-                          Navigator.pushReplacement(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (context) => const LoginScreen(),
-                              )).onError((error, stackTrace) {
-                            alertSnackbar(
-                                context, 'Error: ${error.toString()}');
-                          });
-                        });
-                      }
-                      // Navigator.of(context)
-                      //     .push(CupertinoPageRoute(builder: (context) => const MainHome()));
-                    },
-                    child: Text(
-                      "Submit",
-                      style: const TextStyle(fontSize: 18, color: white),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }

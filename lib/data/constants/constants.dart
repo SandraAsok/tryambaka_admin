@@ -25,3 +25,7 @@ final List<String> _adImages = [
   "assets/images/saree_cover.jpeg",
   "assets/images/saree_cover2.jpeg",
 ];
+
+SizedBox sbox = SizedBox(
+  height: 10,
+);
