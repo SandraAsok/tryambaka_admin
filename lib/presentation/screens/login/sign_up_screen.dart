@@ -64,19 +64,19 @@ class SignUpScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 30),
                   ),
                 ),
-                sbox,
-                sbox,
+                kHeight10,
+                kHeight10,
                 TextFieldSignUp(
                     controller: nameController,
                     icon: Icons.edit,
                     title: 'Name'),
-                sbox,
+                kHeight10,
                 TextFieldSignUp(
                     selection: 1,
                     controller: emailController,
                     icon: Icons.email,
                     title: 'Email'),
-                sbox,
+                kHeight10,
                 TextFieldSignUp(
                   // validator: ,
                   passwordVisible: true,
@@ -84,8 +84,8 @@ class SignUpScreen extends StatelessWidget {
                   icon: Icons.lock,
                   title: 'Password',
                 ),
-                sbox,
-                sbox,
+                kHeight10,
+                kHeight10,
                 InkWell(
                   onTap: () {
                     signUp();
@@ -108,7 +108,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                sbox,
+                kHeight10,
                 Center(
                   child: SizedBox(
                     width: size.width * 0.9,
@@ -134,7 +134,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                sbox,
+                kHeight10,
                 GestureDetector(
                   onTap: () {
                     googleSignIn();
@@ -145,11 +145,11 @@ class SignUpScreen extends StatelessWidget {
                         'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png'),
                   ),
                 ),
-                sbox,
+                kHeight10,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Already have an account?",
                       style: TextStyle(color: black, fontSize: 15),
                     ),

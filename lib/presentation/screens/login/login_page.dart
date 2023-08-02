@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +66,7 @@ class LoginPage extends StatelessWidget {
     return SafeArea(
       child: Stack(
         children: [
-          LoginBackground(imageurl: "assets/images/login_bg.jpg"),
+          const LoginBackground(imageurl: "assets/images/login_bg.jpg"),
           Scaffold(
             backgroundColor: transparent,
             body: SingleChildScrollView(
@@ -78,12 +80,15 @@ class LoginPage extends StatelessWidget {
                     const Center(
                       child: Text(
                         'Login to Account',
-                        style: TextStyle(fontSize: 30),
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: white,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
-                    sbox,
-                    sbox,
-                    sbox,
+                    kHeight10,
+                    kHeight10,
+                    kHeight10,
                     TextFieldSignUp(
                       // passwordVisible: false,
                       validator: emailaddressValidator,
@@ -92,7 +97,7 @@ class LoginPage extends StatelessWidget {
                       controller: emailController,
                       icon: Icons.email, title: 'Email',
                     ),
-                    sbox,
+                    kHeight10,
                     TextFieldSignUp(
                       passwordVisible: true,
                       // isNumberPad: true,
@@ -102,8 +107,8 @@ class LoginPage extends StatelessWidget {
                       icon: Icons.lock,
                       title: 'Password',
                     ),
-                    sbox,
-                    sbox,
+                    kHeight10,
+                    kHeight10,
                     InkWell(
                       onTap: () {
                         signIn();
@@ -120,13 +125,16 @@ class LoginPage extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 8.0),
                             child: Text(
                               'Log In',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: white,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
                       ),
                     ),
-                    sbox,
+                    kHeight10,
                     Center(
                       child: SizedBox(
                         width: size.width * 0.9,
@@ -139,45 +147,35 @@ class LoginPage extends StatelessWidget {
                               Container(
                                 width: size.width * 0.25,
                                 height: 1,
-                                color: grey,
+                                color: white,
                               ),
-                              const Text('or Continue with'),
+                              const Text(
+                                'or Continue with',
+                                style: TextStyle(color: white, fontSize: 18),
+                              ),
                               Container(
                                 width: size.width * 0.25,
                                 height: 1,
-                                color: grey,
+                                color: white,
                               )
                             ],
                           ),
                         ),
                       ),
                     ),
-                    sbox,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            googleSignIn();
-                          },
-                          child: SizedBox(
-                            width: 40,
-                            child: Image.network(
-                                'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png'),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          width: 40,
-                          child: Image.network(
-                              'https://www.edigitalagency.com.au/wp-content/uploads/Facebook-logo-blue-circle-large-transparent-png.png'),
-                        ),
-                      ],
+                    kHeight10,
+                    InkWell(
+                      onTap: () {
+                        googleSignIn();
+                      },
+                      child: SizedBox(
+                        width: 40,
+                        child: Image.network(
+                            'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png'),
+                      ),
                     ),
-                    sbox,
-                    sbox,
+                    kHeight10,
+                    kHeight10,
                     InkWell(
                         onTap: () {
                           Navigator.push(
@@ -188,16 +186,18 @@ class LoginPage extends StatelessWidget {
                         },
                         child: const Text(
                           'Forgot Password?',
-                          style:
-                              TextStyle(decoration: TextDecoration.underline),
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: white,
+                              fontSize: 20),
                         )),
-                    sbox,
+                    kHeight10,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "Already have an account?",
-                          style: TextStyle(color: black.withOpacity(0.5)),
+                          style: TextStyle(color: white.withOpacity(0.5)),
                         ),
                         InkWell(
                           onTap: () {
@@ -210,6 +210,10 @@ class LoginPage extends StatelessWidget {
                           },
                           child: const Text(
                             "Sign In",
+                            style: TextStyle(
+                                color: white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
                           ),
                         ),
                       ],

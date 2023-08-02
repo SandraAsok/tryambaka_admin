@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tryambaka_admin/data/colors/colors.dart';
@@ -25,7 +27,3 @@ final List<String> _adImages = [
   "assets/images/saree_cover.jpeg",
   "assets/images/saree_cover2.jpeg",
 ];
-
-SizedBox sbox = SizedBox(
-  height: 10,
-);

@@ -17,7 +17,7 @@ class LoginOrSignUp extends StatelessWidget {
     return SafeArea(
         child: Stack(
       children: [
-        LoginBackground(imageurl: "assets/images/login_bg.jpg"),
+        const LoginBackground(imageurl: "assets/images/login_bg.jpg"),
         Scaffold(
           backgroundColor: transparent,
           body: Column(
@@ -53,8 +53,8 @@ class LoginOrSignUp extends StatelessWidget {
                   ),
                 ),
               ),
-              sbox,
-              sbox,
+              kHeight10,
+              kHeight10,
               Center(
                 child: SizedBox(
                   width: size.width * 0.9,
@@ -83,7 +83,7 @@ class LoginOrSignUp extends StatelessWidget {
                   ),
                 ),
               ),
-              sbox,
+              kHeight10,
               MainButton(
                 text: 'Continue with Password',
                 iconurl:
@@ -91,12 +91,12 @@ class LoginOrSignUp extends StatelessWidget {
                 color: grey,
                 widget: LoginPage(),
               ),
-              sbox,
-              sbox,
+              kHeight10,
+              kHeight10,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Don't have Account? ",
                     style: TextStyle(color: white, fontSize: 18),
                   ),

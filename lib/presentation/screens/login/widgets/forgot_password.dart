@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +49,7 @@ class ForgotPassword extends StatelessWidget {
     return SafeArea(
       child: Stack(
         children: [
-          LoginBackground(imageurl: "assets/images/login_bg.jpg"),
+          const LoginBackground(imageurl: "assets/images/login_bg.jpg"),
           Scaffold(
             backgroundColor: transparent,
             body: SingleChildScrollView(
@@ -65,8 +67,8 @@ class ForgotPassword extends StatelessWidget {
                           style: TextStyle(fontSize: 30),
                         ),
                       ),
-                      sbox,
-                      sbox,
+                      kHeight10,
+                      kHeight10,
                       const SizedBox(
                         height: 100,
                       ),
@@ -77,7 +79,7 @@ class ForgotPassword extends StatelessWidget {
                           controller: emailController,
                           icon: Icons.email,
                           title: 'Email'),
-                      sbox,
+                      kHeight10,
                       // SignUpButton(
                       //     // ontap: signIn(),
                       //     size: size,
@@ -85,8 +87,8 @@ class ForgotPassword extends StatelessWidget {
                       //     text: 'Log In',
                       //     widget: MainPage(),
                       //   ),
-                      sbox,
-                      sbox,
+                      kHeight10,
+                      kHeight10,
                       InkWell(
                         onTap: () {
                           verifyEmail();
@@ -109,11 +111,11 @@ class ForgotPassword extends StatelessWidget {
                           ),
                         ),
                       ),
-                      sbox,
+                      kHeight10,
 
-                      sbox,
+                      kHeight10,
 
-                      sbox,
+                      kHeight10,
                     ],
                   ),
                 ),
