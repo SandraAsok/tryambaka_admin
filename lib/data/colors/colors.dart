@@ -5,5 +5,9 @@ const Color black = Colors.black;
 const Color white = Colors.white;
 const Color grey = Colors.grey;
 const Color blue = Colors.blue;
+const Color bgcolor = white;
+const Color iconcolor = black;
+const Color blackfont = black;
+const Color whitefont = white;
 
 const Color fontcolor = Colors.black;
