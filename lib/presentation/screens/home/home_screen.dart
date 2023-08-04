@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_admin/data/colors/colors.dart';
 import 'package:tryambaka_admin/data/functions/functions.dart';
+import 'package:tryambaka_admin/presentation/screens/home/product_screen.dart';
 import 'package:tryambaka_admin/presentation/screens/home/widgets/add_new_product.dart';
-import 'package:tryambaka_admin/presentation/screens/home/widgets/order_screen.dart';
-import 'package:tryambaka_admin/presentation/screens/home/widgets/product_screen.dart';
+import 'package:tryambaka_admin/presentation/screens/home/order_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -86,10 +86,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              body: const TabBarView(
+              body: TabBarView(
                 children: <Widget>[
                   ProductScreen(),
-                  OrderScreen(),
+                  const OrderScreen(),
                 ],
               ),
             ),

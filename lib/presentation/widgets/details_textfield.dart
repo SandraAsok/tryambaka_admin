@@ -63,9 +63,11 @@ class DetailsTextFieldWidget extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: fieldName,
                   labelStyle: const TextStyle(
-                    fontSize: 20,
-                    color: black,
-                  ),
+                      fontSize: 20, color: black, fontWeight: FontWeight.w500),
+                ),
+                style: const TextStyle(
+                  color: blackfont,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],

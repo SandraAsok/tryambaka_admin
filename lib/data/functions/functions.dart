@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -29,11 +31,11 @@ void showLogoutConfirmationDialog(BuildContext context) {
     builder: (BuildContext context) {
       return AlertDialog(
         backgroundColor: black,
-        title: Text(
+        title: const Text(
           "Alert!",
           style: TextStyle(color: white),
         ),
-        content: Text(
+        content: const Text(
           "Are you sure you want to logout?",
           style: TextStyle(color: white),
         ),
@@ -42,7 +44,7 @@ void showLogoutConfirmationDialog(BuildContext context) {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text(
+            child: const Text(
               "Cancel",
               style: TextStyle(color: white),
             ),
@@ -55,10 +57,10 @@ void showLogoutConfirmationDialog(BuildContext context) {
                   return const LoginOrSignUp();
                 }), (route) => false);
               }).catchError((error) {
-                print("error : ${error.toString()}");
+                log("error : ${error.toString()}");
               });
             },
-            child: Text(
+            child: const Text(
               "Yes",
               style: TextStyle(color: white),
             ),
