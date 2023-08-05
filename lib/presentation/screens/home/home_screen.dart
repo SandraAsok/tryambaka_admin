@@ -7,6 +7,7 @@ import 'package:tryambaka_admin/data/functions/functions.dart';
 import 'package:tryambaka_admin/presentation/screens/home/product_screen.dart';
 import 'package:tryambaka_admin/presentation/screens/home/widgets/add_new_product.dart';
 import 'package:tryambaka_admin/presentation/screens/home/order_screen.dart';
+import 'package:tryambaka_admin/presentation/screens/search/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -28,7 +29,10 @@ class HomeScreen extends StatelessWidget {
                 foregroundColor: black,
                 actions: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(CupertinoPageRoute(
+                          builder: (context) => const SearchScreen()));
+                    },
                     icon: const Icon(
                       Icons.search,
                       color: iconcolor,
