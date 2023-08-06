@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tryambaka_admin/data/colors/colors.dart';
-import 'package:tryambaka_admin/domain/firebase_functions.dart';
+import 'package:tryambaka_admin/data/functions/firebase_functions.dart';
 import 'package:tryambaka_admin/domain/models/product_model.dart';
 import 'package:tryambaka_admin/presentation/widgets/details_textfield.dart';
 
@@ -238,6 +238,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               price: priceController.text,
                               color: colorController.text,
                               description: descriptionController.text,
+                              imageList: imageList,
                             ),
                             id: widget.id,
                             context: context,

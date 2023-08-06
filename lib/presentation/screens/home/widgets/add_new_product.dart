@@ -8,7 +8,7 @@ import 'package:tryambaka_admin/data/constants/constants.dart';
 import 'package:tryambaka_admin/domain/models/product_model.dart';
 import 'package:tryambaka_admin/presentation/widgets/details_textfield.dart';
 
-import '../../../../domain/firebase_functions.dart';
+import '../../../../data/functions/firebase_functions.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class AddNewProductScreen extends StatefulWidget {

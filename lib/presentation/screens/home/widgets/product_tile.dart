@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_admin/data/colors/colors.dart';
 import 'package:tryambaka_admin/data/constants/constants.dart';
-import 'package:tryambaka_admin/domain/firebase_functions.dart';
+import 'package:tryambaka_admin/data/functions/firebase_functions.dart';
 import 'package:tryambaka_admin/presentation/screens/home/widgets/product_details.dart';
 
 class ProductTile extends StatelessWidget {
