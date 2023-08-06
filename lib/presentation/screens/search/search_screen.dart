@@ -87,7 +87,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void filterProducts(String query) {
     setState(() {
       filteredproducts = availableproducts.where((doc) {
-        String name = doc.data()['jobtitle'].toLowerCase();
+        String name = doc.data()['productName'].toLowerCase();
         String searchLower = query.toLowerCase();
         return name.contains(searchLower);
       }).toList();

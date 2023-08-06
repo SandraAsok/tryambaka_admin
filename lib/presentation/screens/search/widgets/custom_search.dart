@@ -13,16 +13,16 @@ class CustomSearchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoSearchTextField(
       borderRadius: BorderRadius.circular(30),
-      backgroundColor: Colors.grey.withOpacity(0.4),
+      backgroundColor: grey.withOpacity(0.5),
       prefixIcon: const Icon(
         CupertinoIcons.search,
-        color: Colors.grey,
+        color: grey,
       ),
       suffixIcon: const Icon(
         CupertinoIcons.xmark_circle_fill,
-        color: Colors.grey,
+        color: grey,
       ),
-      style: TextStyle(color: white),
+      style: const TextStyle(color: black),
       onChanged: onChanged,
       placeholder: 'Search Job Title',
     );
