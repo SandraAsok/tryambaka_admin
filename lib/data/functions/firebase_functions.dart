@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tryambaka_admin/data/colors/colors.dart';
+import 'package:tryambaka_admin/domain/models/exclusive_model.dart';
 import 'package:tryambaka_admin/domain/models/product_model.dart';
 import 'package:tryambaka_admin/presentation/screens/home/home_screen.dart';
 
@@ -179,5 +180,46 @@ Future<void> updateOrderStatus(String orderId, bool isActive) async {
       backgroundColor: Colors.red,
       textColor: white,
     );
+  }
+}
+
+Future<void> addExclusive(
+    Exclusive exclusivemodel, BuildContext context) async {
+  final exclusiveProduct = FirebaseFirestore.instance.collection('exclusive');
+  final reference = exclusiveProduct.doc();
+  try {
+    SnackBar(
+      content: const Text("Exclusive Product added"),
+      action: SnackBarAction(
+        label: 'Dismiss',
+        onPressed: () {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        },
+      ),
+    );
+    await reference.set({
+      'id': reference.id,
+      'productName': exclusivemodel.productName,
+      'subName': exclusivemodel.subName,
+      'category': exclusivemodel.category,
+      'description': exclusivemodel.description,
+      'price': exclusivemodel.price,
+      'quantity': exclusivemodel.quantity,
+      'color': exclusivemodel.color,
+      'image': exclusivemodel.imageList,
+    }).then((value) {
+      Navigator.of(context).pop();
+    });
+  } catch (e) {
+    SnackBar(
+      content: Text("Failed to add product : $e"),
+      action: SnackBarAction(
+        label: 'Dismiss',
+        onPressed: () {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        },
+      ),
+    );
+    log("Failed to add product : $e");
   }
 }

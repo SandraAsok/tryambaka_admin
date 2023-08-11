@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_admin/data/colors/colors.dart';
 import 'package:tryambaka_admin/data/functions/functions.dart';
+import 'package:tryambaka_admin/presentation/screens/home/exclusive_screen.dart';
 import 'package:tryambaka_admin/presentation/screens/home/product_screen.dart';
+import 'package:tryambaka_admin/presentation/screens/home/widgets/add_new_exclusive.dart';
 import 'package:tryambaka_admin/presentation/screens/home/widgets/add_new_product.dart';
 import 'package:tryambaka_admin/presentation/screens/home/order_screen.dart';
 import 'package:tryambaka_admin/presentation/screens/search/search_screen.dart';
@@ -18,7 +20,7 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: DefaultTabController(
         initialIndex: 0,
-        length: 2,
+        length: 3,
         child: Stack(
           children: [
             Scaffold(
@@ -71,6 +73,15 @@ class HomeScreen extends StatelessWidget {
                     ),
                     Tab(
                       child: Text(
+                        "Exclusives",
+                        style: TextStyle(
+                            color: blackfont,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Tab(
+                      child: Text(
                         "Orders",
                         style: TextStyle(
                             color: blackfont,
@@ -93,6 +104,7 @@ class HomeScreen extends StatelessWidget {
               body: TabBarView(
                 children: <Widget>[
                   ProductScreen(),
+                  ExclusiveScreen(),
                   const OrderScreen(),
                 ],
               ),
@@ -101,31 +113,68 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 15),
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (context) => const AddNewProductScreen(),
+                child: Row(
+                  children: [
+                    const Spacer(),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => const AddNewProductScreen(),
+                          ),
+                        );
+                      },
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              side: const BorderSide(color: black)),
+                        ),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(black),
+                        padding: MaterialStateProperty.all<EdgeInsets>(
+                          EdgeInsets.symmetric(
+                              horizontal: size.width * 0.1, vertical: 15),
+                        ),
                       ),
-                    );
-                  },
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          side: const BorderSide(color: black)),
+                      child: const Text(
+                        "Add Product",
+                        style: TextStyle(color: white, fontSize: 20),
+                      ),
                     ),
-                    backgroundColor: MaterialStateProperty.all<Color>(black),
-                    padding: MaterialStateProperty.all<EdgeInsets>(
-                      EdgeInsets.symmetric(
-                          horizontal: size.width * 0.2, vertical: 15),
+                    const Spacer(),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => const AddNewExclusiveScreen(),
+                          ),
+                        );
+                      },
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              side: const BorderSide(color: black)),
+                        ),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(black),
+                        padding: MaterialStateProperty.all<EdgeInsets>(
+                          EdgeInsets.symmetric(
+                              horizontal: size.width * 0.1, vertical: 15),
+                        ),
+                      ),
+                      child: const Text(
+                        "Add Exclusive",
+                        style: TextStyle(color: white, fontSize: 20),
+                      ),
                     ),
-                  ),
-                  child: const Text(
-                    "Add Product",
-                    style: TextStyle(color: white, fontSize: 22),
-                  ),
+                    const Spacer(),
+                  ],
                 ),
               ),
             ),

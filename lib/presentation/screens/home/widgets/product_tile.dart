@@ -63,7 +63,7 @@ class ProductTile extends StatelessWidget {
               child: Stack(
                 children: [
                   Positioned(
-                    left: 125,
+                    left: 145,
                     top: 0,
                     child: Row(
                       children: [
