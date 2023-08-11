@@ -223,3 +223,59 @@ Future<void> addExclusive(
     log("Failed to add product : $e");
   }
 }
+
+Future<void> updateExclusive(
+    {required Exclusive exclusivemodel,
+    required String id,
+    required BuildContext context}) async {
+  final exclusiveproduct = FirebaseFirestore.instance.collection("exclusive");
+  final exclusiveproductref = exclusiveproduct.doc(id);
+  try {
+    // showSnackbar(context, "product updated");
+    SnackBar(
+      content: const Text("Exclusive product updated"),
+      action: SnackBarAction(
+        label: 'Dismiss',
+        onPressed: () {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        },
+      ),
+    );
+    await exclusiveproductref.update({
+      'productName': exclusivemodel.productName,
+      'subName': exclusivemodel.subName,
+      'category': exclusivemodel.category,
+      'description': exclusivemodel.description,
+      'price': exclusivemodel.price,
+      'quantity': exclusivemodel.quantity,
+      'color': exclusivemodel.color,
+      'image': exclusivemodel.imageList,
+    }).then((value) {
+      // showSnackbar(context, "product updated");
+      SnackBar(
+        content: const Text("product updated"),
+        action: SnackBarAction(
+          label: 'Dismiss',
+          onPressed: () {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          },
+        ),
+      );
+      Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
+        return const HomeScreen();
+      }));
+    });
+    log("exclusive Product updated");
+  } catch (e) {
+    SnackBar(
+      content: Text("failed to update product: $e"),
+      action: SnackBarAction(
+        label: 'Dismiss',
+        onPressed: () {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        },
+      ),
+    );
+    log("failed to update product : $e");
+  }
+}

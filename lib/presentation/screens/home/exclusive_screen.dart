@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:tryambaka_admin/presentation/screens/home/widgets/product_tile.dart';
+import 'package:tryambaka_admin/presentation/screens/home/widgets/exclusive_tile.dart';
 import 'package:tryambaka_admin/presentation/widgets/shimmer_effect.dart';
 
 class ExclusiveScreen extends StatelessWidget {
@@ -31,7 +31,7 @@ class ExclusiveScreen extends StatelessWidget {
               mainAxisSpacing: 16.0,
             ),
             itemBuilder: (context, index) {
-              return ProductTile(
+              return ExclusiveTile(
                 id: documents[index].get('id'),
                 productName: documents[index].get('productName'),
                 subName: documents[index].get('subName'),
