@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tryambaka_admin/data/colors/colors.dart';
 import 'package:tryambaka_admin/data/constants/constants.dart';
 import 'package:tryambaka_admin/data/functions/firebase_functions.dart';
-import 'package:tryambaka_admin/presentation/screens/home/widgets/product_details.dart';
+import 'package:tryambaka_admin/presentation/screens/home/widgets/exclusive_details.dart';
 
 class ExclusiveTile extends StatelessWidget {
   final String id;
@@ -36,7 +36,7 @@ class ExclusiveTile extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Navigator.of(context).push(CupertinoPageRoute(
-              builder: (context) => ProductDetails(
+              builder: (context) => ExclusiveDetails(
                     id: id,
                     productName: productName,
                     subName: subName,
@@ -106,7 +106,7 @@ class ExclusiveTile extends StatelessWidget {
                                 },
                               ).then((value) {
                                 if (value != null && value) {
-                                  deleteProduct(id, context);
+                                  deleteExclusiveProduct(id, context);
                                 }
                               });
                             },

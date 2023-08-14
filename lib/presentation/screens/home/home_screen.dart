@@ -9,6 +9,7 @@ import 'package:tryambaka_admin/presentation/screens/home/product_screen.dart';
 import 'package:tryambaka_admin/presentation/screens/home/widgets/add_new_exclusive.dart';
 import 'package:tryambaka_admin/presentation/screens/home/widgets/add_new_product.dart';
 import 'package:tryambaka_admin/presentation/screens/home/order_screen.dart';
+import 'package:tryambaka_admin/presentation/screens/search/exclusive_search_screen.dart';
 import 'package:tryambaka_admin/presentation/screens/search/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -32,8 +33,46 @@ class HomeScreen extends StatelessWidget {
                 actions: [
                   IconButton(
                     onPressed: () {
-                      Navigator.of(context).push(CupertinoPageRoute(
-                          builder: (context) => const SearchScreen()));
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            backgroundColor: black,
+                            title: const Text(
+                              'Select Which Product',
+                              style: TextStyle(color: whitefont),
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(CupertinoPageRoute(
+                                      builder: (context) =>
+                                          const SearchScreen(),
+                                      fullscreenDialog: true));
+                                },
+                                child: const Text(
+                                  'Product',
+                                  style: TextStyle(color: whitefont),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(CupertinoPageRoute(
+                                      builder: (context) =>
+                                          const ExclusiveSearchScreen(),
+                                      fullscreenDialog: true));
+                                },
+                                child: const Text(
+                                  'Exclusive',
+                                  style: TextStyle(color: whitefont),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                      // Navigator.of(context).push(CupertinoPageRoute(
+                      //     builder: (context) => const SearchScreen()));
                     },
                     icon: const Icon(
                       Icons.search,

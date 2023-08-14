@@ -26,8 +26,29 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   final TextEditingController colorController = TextEditingController();
-  List<String> categoriesList = ["Men", "Women", "Children", "Others"];
+  List<String> categoriesList = [
+    "Men",
+    "Women",
+    "Boy",
+    "Girl",
+  ];
+  List<String> types = [
+    'shirt',
+    'Double Mund',
+    'Saree',
+    'Half saree',
+    'Churidar',
+    'pattu paavada',
+    'froke',
+    'Baniyan',
+    'Men set',
+    'Woman set',
+    'Boys set',
+    'Girls set',
+  ];
   List<String> imageList = [];
+  String? categoryvalue;
+  String? typevalue;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -102,10 +123,57 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
               fieldName: "Sub Name",
               textController: subnameController,
             ),
-            DetailsTextFieldWidget(
-              size: size,
-              fieldName: "Category",
-              textController: categoryController,
+            Padding(
+              padding: const EdgeInsets.only(left: 50, right: 50),
+              child: DropdownButtonFormField<String>(
+                iconSize: 30,
+                dropdownColor: white,
+                hint: const Text(
+                  "Select Category",
+                  style: TextStyle(color: fontcolor, fontSize: 20),
+                ),
+                value: categoryvalue,
+                items: categoriesList.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(
+                      value,
+                      style: const TextStyle(fontSize: 20, color: fontcolor),
+                    ),
+                  );
+                }).toList(),
+                onChanged: (newValue) {
+                  setState(() {
+                    categoryvalue = newValue;
+                  });
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 50, right: 50),
+              child: DropdownButtonFormField<String>(
+                iconSize: 30,
+                dropdownColor: white,
+                hint: const Text(
+                  "Select Type",
+                  style: TextStyle(color: fontcolor, fontSize: 20),
+                ),
+                value: typevalue,
+                items: types.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(
+                      value,
+                      style: const TextStyle(fontSize: 20, color: fontcolor),
+                    ),
+                  );
+                }).toList(),
+                onChanged: (newValue) {
+                  setState(() {
+                    typevalue = newValue;
+                  });
+                },
+              ),
             ),
             DetailsTextFieldWidget(
               size: size,
@@ -140,12 +208,13 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
                       Products(
                         productName: productnameController.text.trim(),
                         subName: subnameController.text.trim(),
-                        category: categoryController.text.trim(),
+                        category: categoryvalue.toString(),
                         description: descriptionController.text.trim(),
                         quantity: quantityController.text.trim(),
                         price: priceController.text.trim(),
                         color: colorController.text.trim(),
                         imageList: imageList,
+                        type: typevalue.toString(),
                       ),
                       context);
                 },

@@ -347,7 +347,7 @@ Future<List> _uploadMoreImage(
   String downloadURL = await ref.getDownloadURL();
   log('File uploaded successfully: $downloadURL');
   imageList.add(downloadURL);
-  addmoreImage(imageList, id);
+  addmoreExclusiveImage(imageList, id);
 
   return imageList;
 }

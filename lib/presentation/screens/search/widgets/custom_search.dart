@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:tryambaka_admin/data/colors/colors.dart';
 
 class CustomSearchWidget extends StatelessWidget {
@@ -24,7 +23,7 @@ class CustomSearchWidget extends StatelessWidget {
       ),
       style: const TextStyle(color: black),
       onChanged: onChanged,
-      placeholder: 'Search Job Title',
+      placeholder: 'Search Product Name',
     );
   }
 }

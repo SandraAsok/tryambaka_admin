@@ -6,6 +6,7 @@ class Products {
   final String price;
   final String color;
   final String description;
+  final String type;
   final List? imageList;
   final String? id;
 
@@ -17,6 +18,7 @@ class Products {
     required this.price,
     required this.color,
     required this.description,
+    required this.type,
     this.imageList,
     this.id,
   });

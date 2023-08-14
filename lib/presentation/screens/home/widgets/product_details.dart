@@ -46,6 +46,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   final TextEditingController quantityController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   final TextEditingController colorController = TextEditingController();
+  final TextEditingController typecontroller = TextEditingController();
 
   List imageList = [];
 
@@ -182,6 +183,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                       DetailsTextFieldWidget(
                         size: size,
+                        fieldName: "Type",
+                        textController: typecontroller,
+                        textString: widget.category,
+                        enableTextField: !editOrUpdate,
+                      ),
+                      DetailsTextFieldWidget(
+                        size: size,
                         fieldName: "Quantity",
                         enableTextField: !editOrUpdate,
                         textString: widget.quantity,
@@ -239,6 +247,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               color: colorController.text,
                               description: descriptionController.text,
                               imageList: imageList,
+                              type: typecontroller.text,
                             ),
                             id: widget.id,
                             context: context,

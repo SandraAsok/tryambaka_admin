@@ -32,6 +32,7 @@ Future<void> addProduct(Products productmodel, BuildContext context) async {
       'price': productmodel.price,
       'quantity': productmodel.quantity,
       'color': productmodel.color,
+      'type': productmodel.type,
       'image': productmodel.imageList,
     }).then((value) {
       Navigator.of(context).pop();
@@ -135,8 +136,49 @@ Future<void> deleteProduct(String id, BuildContext context) {
   });
 }
 
+Future<void> deleteExclusiveProduct(String id, BuildContext context) {
+  CollectionReference product =
+      FirebaseFirestore.instance.collection('exclusive');
+  return product.doc(id).delete().then((value) {
+    log("product deleted");
+    SnackBar(
+      content: const Text("Product deleted"),
+      action: SnackBarAction(
+        label: 'Dismiss',
+        onPressed: () {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        },
+      ),
+    );
+  }).catchError((error) {
+    log("failed to delete product: $error");
+    SnackBar(
+      content: Text("failed to delete product :$error"),
+      action: SnackBarAction(
+        label: 'Dismiss',
+        onPressed: () {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        },
+      ),
+    );
+  });
+}
+
 Future<void> addmoreImage(List imageList, String id) async {
   final product = FirebaseFirestore.instance.collection('products');
+  final productRef = product.doc(id);
+  try {
+    await productRef.update({
+      'image': imageList,
+    });
+    log('image updated');
+  } catch (e) {
+    log('failed to update image : $e');
+  }
+}
+
+Future<void> addmoreExclusiveImage(List imageList, String id) async {
+  final product = FirebaseFirestore.instance.collection('exclusive');
   final productRef = product.doc(id);
   try {
     await productRef.update({
