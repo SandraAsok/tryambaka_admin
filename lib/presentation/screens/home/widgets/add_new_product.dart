@@ -28,23 +28,25 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
   final TextEditingController colorController = TextEditingController();
   List<String> categoriesList = [
     "Men",
-    "Women",
+    "Woman",
     "Boy",
     "Girl",
   ];
   List<String> types = [
     'shirt',
-    'Double Mund',
+    'Mund',
+    'kurta',
+    'Tshirt',
     'Saree',
-    'Half saree',
+    'setmundu',
+    'Dhavani',
     'Churidar',
+    'kidset',
+    'kidsmundu',
+    'kidskurta',
     'pattu paavada',
-    'froke',
-    'Baniyan',
-    'Men set',
-    'Woman set',
-    'Boys set',
-    'Girls set',
+    'frock',
+    'midiset',
   ];
   List<String> imageList = [];
   String? categoryvalue;
