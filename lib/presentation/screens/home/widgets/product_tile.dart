@@ -134,7 +134,7 @@ class ProductTile extends StatelessWidget {
               ),
             ),
             Text(
-              price,
+              "₹ $price/-",
               style: const TextStyle(
                   letterSpacing: 0.5,
                   fontSize: 15,

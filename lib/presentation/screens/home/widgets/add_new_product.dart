@@ -126,7 +126,7 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
               textController: subnameController,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 50, right: 50),
+              padding: const EdgeInsets.only(left: 60, right: 50),
               child: DropdownButtonFormField<String>(
                 iconSize: 30,
                 dropdownColor: white,
@@ -152,7 +152,7 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 50, right: 50),
+              padding: const EdgeInsets.only(left: 60, right: 50),
               child: DropdownButtonFormField<String>(
                 iconSize: 30,
                 dropdownColor: white,
@@ -182,7 +182,7 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
               fieldName: "Description",
               textController: descriptionController,
               height: 160,
-              maxLines: 4,
+              maxLines: 5,
             ),
             DetailsTextFieldWidget(
               size: size,
